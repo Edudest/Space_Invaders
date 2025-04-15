@@ -1,4 +1,4 @@
-// Instancias
+// Instâncias
 const ship = document.getElementById("nave");
 const game = document.getElementById("game");
 
@@ -6,51 +6,102 @@ const game = document.getElementById("game");
 let posiçãoNave = game.offsetWidth / 2 - ship.offsetWidth / 2;
 let localNave = game.offsetHeight - ship.offsetHeight - 30;
 
-// Preparação para receber movimento
+// Movimento
 let esquerda = false;
 let direita = false;
-let baixo = false;
 let cima = false;
+let baixo = false;
 
-// Movimentação com referencia para esquerda e para cima
+// Estado do jogo
+let gameOver = false;
+
+// Posicionar a nave visualmente
 function moveShip() {
     ship.style.left = `${posiçãoNave}px`;
     ship.style.top = `${localNave}px`;
 }
 
-// Evento de pressão de tecla
+// Mostrar mensagem de game over
+function mostrarGameOver() {
+    const gameOverDiv = document.createElement("div");
+    gameOverDiv.id = "gameOverMessage";
+    gameOverDiv.style.position = "absolute";
+    gameOverDiv.style.top = "50%";
+    gameOverDiv.style.left = "50%";
+    gameOverDiv.style.transform = "translate(-50%, -50%)";
+    gameOverDiv.style.fontSize = "48px";
+    gameOverDiv.style.color = "red";
+    gameOverDiv.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    gameOverDiv.style.padding = "20px 40px";
+    gameOverDiv.style.borderRadius = "10px";
+    gameOverDiv.style.zIndex = "1000";
+    gameOverDiv.textContent = "Game Over! Você perdeu!";
+    game.appendChild(gameOverDiv);
+}
+
+// Colisão
+function detectarColisao(el1, el2) {
+    const r1 = el1.getBoundingClientRect();
+    const r2 = el2.getBoundingClientRect();
+
+    return (
+        r1.left < r2.right &&
+        r1.right > r2.left &&
+        r1.top < r2.bottom &&
+        r1.bottom > r2.top
+    );
+}
+
+// Teclas pressionadas
 document.addEventListener("keydown", (event) => {
+    if (gameOver) return; // Desabilita movimento após game over
     if (event.key === "a") esquerda = true;
     if (event.key === "d") direita = true;
-    if (event.key === "w") baixo = true;
-    if (event.key === "s") cima = true;
+    if (event.key === "w") cima = true;
+    if (event.key === "s") baixo = true;
 });
 
-// Evento de soltar tecla
 document.addEventListener("keyup", (event) => {
+    if (gameOver) return; // Desabilita movimento após game over
     if (event.key === "a") esquerda = false;
     if (event.key === "d") direita = false;
-    if (event.key === "w") baixo = false;
-    if (event.key === "s") cima = false;
+    if (event.key === "w") cima = false;
+    if (event.key === "s") baixo = false;
 });
 
-// Loop para movimentação por pressão continua
+// Loop
 function gameLoop() {
+    if (gameOver) return; // Para o loop após game over
+
+    // Movimento
     if (esquerda && posiçãoNave > 0) {
         posiçãoNave -= 10;
     }
     if (direita && posiçãoNave < game.offsetWidth - ship.offsetWidth) {
         posiçãoNave += 10;
     }
-    if (baixo && localNave > 0) {
+    if (cima && localNave > 0) {
         localNave -= 10;
     }
-    if (cima && localNave < game.offsetHeight - ship.offsetHeight) {
+    if (baixo && localNave < game.offsetHeight - ship.offsetHeight) {
         localNave += 10;
     }
 
-    requestAnimationFrame(gameLoop);
-    moveShip(); // Função explicada na linha 16
+    moveShip();
+
+    // Verifica colisão com todos os inimigos
+    const inimigosAtuais = document.querySelectorAll(".inimigo");
+    for (const inimigo of inimigosAtuais) {
+        if (detectarColisao(ship, inimigo)) {
+            gameOver = true;
+            mostrarGameOver();
+            break;
+        }
+    }
+
+    if (!gameOver) {
+        requestAnimationFrame(gameLoop);
+    }
 }
 
 gameLoop();
