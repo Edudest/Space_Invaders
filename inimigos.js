@@ -1,7 +1,7 @@
 const linhas = 4;
-const colunas = 6;
-const larguraInimigo = 40;
-const espacamentoHorizontal = 150;
+const colunas = 7;
+const larguraInimigo = 30;
+const espacamentoHorizontal = 100;
 
 const larguraTotal = colunas * (larguraInimigo + espacamentoHorizontal) - espacamentoHorizontal;
 const posicaoHorizontal = (game.offsetWidth - larguraTotal) / 2;
@@ -39,8 +39,8 @@ function moveColunas() {
 
     // Verifica bordas
     if (
-      novaEsquerda <= 200 ||
-      novaEsquerda + coluna.offsetWidth >= 2100
+      novaEsquerda <= 80 ||
+      novaEsquerda + coluna.offsetWidth >= 1600
     ) {
       alterarDirecao = true;
     }
@@ -51,4 +51,4 @@ function moveColunas() {
   }
 }
 
-setInterval(moveColunas, 50);
+ setInterval(moveColunas, 50);
