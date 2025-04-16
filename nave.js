@@ -3,7 +3,7 @@ const ship = document.getElementById("nave");
 const game = document.getElementById("game");
 
 // Referências de posição
-let posiçãoNave = game.offsetWidth / 2 - ship.offsetWidth / 2;
+let posiçãoNave = game.offsetWidth / 2;
 let localNave = game.offsetHeight - ship.offsetHeight - 30;
 
 // Preparação para receber movimento
@@ -53,4 +53,12 @@ function gameLoop() {
     moveShip(); // Função explicada na linha 16
 }
 
-gameLoop();
+gameLoop(); // Execução do jogo
+
+// Função para detectar a posição atual da nave 
+function Coordenada() {
+    return { x: posiçãoNave, y: localNave };
+}
+
+// Comando para exportar a posição da nave 
+window.Coordenada = Coordenada;
