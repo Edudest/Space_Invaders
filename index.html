@@ -17,64 +17,35 @@
       align-items: center;
       justify-content: center;
       color: #39ff14;
+      position: relative;
     }
 
-    .estrelas, .estrelas::after {
-      content: "";
+    /* Estrelas animadas no fundo */
+    .fundo-estrelado {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      overflow: hidden;
+    }
+
+    .estrela {
       position: absolute;
-      top: 0; left: 0;
-      width: 4px;
-      height: 4px;
-      background: transparent;
-      box-shadow: 
-        50px 80px white,
-        120px 40px #00ffff,
-        200px 150px #ff00ff,
-        300px 90px white,
-        400px 50px #39ff14,
-        500px 200px #ff073a,
-        600px 120px #00ffff,
-        700px 80px white,
-        800px 180px #ff00ff,
-        900px 100px white,
-        100px 300px white,
-        200px 350px #39ff14,
-        350px 400px #00ffff,
-        500px 450px #ff073a,
-        600px 300px white,
-        700px 250px #ff00ff;
-      animation: estrelasAnimar 30s linear infinite;
-      z-index: -3;
-      transform: scale(2);
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: cair 10s linear infinite;
     }
 
-    @keyframes estrelasAnimar {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-2000px); }
-    }
-
-    .foguete {
-      position: absolute;
-      bottom: -100px;
-      left: 10%;
-      width: 60px;
-      animation: subirFoguete 10s linear infinite;
-      z-index: -2;
-    }
-
-    @keyframes subirFoguete {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
+    @keyframes cair {
+      from {
+        transform: translateY(-10px);
+        opacity: 0.8;
       }
-      10% {
-        opacity: 1;
-      }
-      80% {
-        opacity: 1;
-        transform: translateY(-100vh) rotate(-5deg);
-      }
-      100% {
+      to {
+        transform: translateY(110vh);
         opacity: 0;
       }
     }
@@ -162,8 +133,8 @@
   </style>
 </head>
 <body>
-  <div class="estrelas"></div>
-  <img class="foguete" src="https://cdn-icons-png.flaticon.com/512/3215/3215530.png" alt="Foguete" />
+  <!-- Estrelas no fundo -->
+  <div class="fundo-estrelado" id="fundo-estrelado"></div>
 
   <h1>🚀 SPACE INVADERS 🚀</h1>
 
@@ -183,6 +154,22 @@
   <script>
     function mostrarInstrucoes() {
       alert("🕹️ Use as setas do teclado para mover a nave.\n🔫 Pressione espaço para atirar.\n👾 Derrote todos os invasores!");
+    }
+
+    // Geração das estrelas em movimento
+    const fundo = document.getElementById('fundo-estrelado');
+    const numeroDeEstrelas = 100;
+
+    for (let i = 0; i < numeroDeEstrelas; i++) {
+      const estrela = document.createElement('div');
+      const tamanho = Math.random() * 3 + 2; // entre 2px e 5px
+      estrela.classList.add('estrela');
+      estrela.style.width = `${tamanho}px`;
+      estrela.style.height = `${tamanho}px`;
+      estrela.style.left = `${Math.random() * 100}%`;
+      estrela.style.animationDuration = `${Math.random() * 10 + 5}s`;
+      estrela.style.animationDelay = `${Math.random() * 10}s`;
+      fundo.appendChild(estrela);
     }
   </script>
 </body>
