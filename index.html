@@ -130,38 +130,11 @@
       z-index: 1;
       filter: drop-shadow(0 0 5px #00ffff);
     }
-
-    /* Invasores animados no fundo */
-    .invaders-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -9; /* Um nível acima das estrelas, mas atrás do conteúdo */
-      pointer-events: none; /* Evita que clique interfira */
-    }
-
-    .invader {
-      position: absolute;
-      width: 40px;
-      animation: moveInvader 3s infinite alternate ease-in-out;
-      opacity: 0.7;
-      filter: drop-shadow(0 0 5px #00ffcc);
-    }
-
-    @keyframes moveInvader {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(40px); }
-    }
   </style>
 </head>
 <body>
   <!-- Estrelas no fundo -->
   <div class="fundo-estrelado" id="fundo-estrelado"></div>
-
-  <!-- Invasores animados no fundo -->
-  <div class="invaders-bg" id="invaders-bg"></div>
 
   <h1>🚀 SPACE INVADERS 🚀</h1>
 
@@ -197,21 +170,6 @@
       estrela.style.animationDuration = `${Math.random() * 10 + 5}s`;
       estrela.style.animationDelay = `${Math.random() * 10}s`;
       fundo.appendChild(estrela);
-    }
-
-    // Geração dos invasores no fundo
-    const invadersBg = document.getElementById('invaders-bg');
-    const quantidadeInvasores = 12;
-
-    for (let i = 0; i < quantidadeInvasores; i++) {
-      const invader = document.createElement('img');
-      invader.src = 'invader.png'; // Certifique-se de ter a imagem do invasor na pasta
-      invader.classList.add('invader');
-      invader.style.top = `${Math.random() * 80 + 5}%`;  // entre 5% e 85% da tela
-      invader.style.left = `${Math.random() * 100}%`;
-      invader.style.animationDuration = `${2 + Math.random() * 3}s`; // 2 a 5 segundos
-      invader.style.animationDelay = `${Math.random() * 5}s`;
-      invadersBg.appendChild(invader);
     }
   </script>
 </body>
