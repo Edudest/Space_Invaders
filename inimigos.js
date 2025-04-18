@@ -25,11 +25,11 @@ for (let col = 0; col < colunas; col++) {
 
   // Repetição de adição dos inimigos às colunas
   for (let row = 0; row < linhas; row++) {
-    const inimigo = document.createElement("div"); 
+    const inimigo = document.createElement("div");
     inimigo.classList.add("inimigo");
     inimigo.classList.add(`${i}`);
     i++;
-    coluna.appendChild(inimigo); 
+    coluna.appendChild(inimigo);
   }
   game.appendChild(coluna); // Adiciona as colunas ao jogo
   formacao.push(coluna); // Adiciona as colunas prontas à formação
@@ -59,7 +59,7 @@ function moverColunas() {
 
   // Realiza a troca de direção
   if (alterarDirecao) {
-    direcao = -1;
+    direcao *= -1;
   }
 
   // Atualização por frames
