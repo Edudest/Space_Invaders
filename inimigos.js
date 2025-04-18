@@ -28,38 +28,43 @@ for (let col = 0; col < colunas; col++) {
     const inimigo = document.createElement("div"); 
     inimigo.classList.add("inimigo");
     inimigo.classList.add(`${i}`);
-    i += 1;
+    i++;
     coluna.appendChild(inimigo); 
   }
-  game.appendChild(coluna); 
+  game.appendChild(coluna); // Adiciona as colunas ao jogo
   formacao.push(coluna); // Adiciona as colunas prontas à formação
 }
 
-let direcao = 1; // 1 vai para a direita / -1 para a esquerda
-let velocidade = 10; 
+let direcao = 1; // 1 = direita e -1 = esquerda
+let velocidade = 5;
 
-// Função responsável por movimentar os inimigos 
-function moveColunas() {
+// Função responsável por movimentar os inimigos
+function moverColunas() {
   let alterarDirecao = false;
 
-  // seleção de colunas a serem movimentadas
+  // Realiza o deslocamento 
   formacao.forEach((coluna) => {
     let esquerdaAtual = parseFloat(coluna.style.left);
     let novaEsquerda = esquerdaAtual + direcao * velocidade;
-    coluna.style.left = `${novaEsquerda}px`; // Realiza o movimento
+    coluna.style.left = `${novaEsquerda}px`;
 
     // Verificação de bordas
     if (
-      novaEsquerda <= 200 ||
-      novaEsquerda + coluna.offsetWidth >= 1800
+      novaEsquerda <= 0 || // lado esquerdo
+      novaEsquerda + coluna.offsetWidth >= game.offsetWidth // lado direito
     ) {
-      alterarDirecao = true; // altera a direção
+      alterarDirecao = true;
     }
   });
 
+  // Realiza a troca de direção
   if (alterarDirecao) {
-    direcao *= -1;
+    direcao = -1;
   }
+
+  // Atualização por frames
+  requestAnimationFrame(moverColunas);
 }
 
-// setInterval(moveColunas, 50); 
+// Inicio de animação
+requestAnimationFrame(moverColunas);
