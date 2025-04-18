@@ -1,10 +1,10 @@
 // Instancias
-const ship = document.getElementById("nave");
+const nave = document.getElementById("nave");
 const game = document.getElementById("game");
 
 // Referências de posição
-let posiçãoNave = game.offsetWidth / 2;
-let localNave = game.offsetHeight - ship.offsetHeight - 30;
+let posicaoNave = game.offsetWidth / 2;
+let localNave = game.offsetHeight - nave.offsetHeight - 30;
 
 // Preparação para receber movimento
 let esquerda = false;
@@ -14,8 +14,8 @@ let cima = false;
 
 // Movimentação com referencia para esquerda e para cima
 function moveShip() {
-    ship.style.left = `${posiçãoNave}px`;
-    ship.style.top = `${localNave}px`;
+    nave.style.left = `${posicaoNave}px`;
+    nave.style.top = `${localNave}px`;
 }
 
 // Evento de pressão de tecla
@@ -36,16 +36,16 @@ document.addEventListener("keyup", (event) => {
 
 // Loop para movimentação por pressão continua
 function gameLoop() {
-    if (esquerda && posiçãoNave > 0) {
-        posiçãoNave -= 10;
+    if (esquerda && posicaoNave > 0) {
+        posicaoNave -= 10;
     }
-    if (direita && posiçãoNave < game.offsetWidth - ship.offsetWidth) {
-        posiçãoNave += 10;
+    if (direita && posicaoNave < game.offsetWidth - nave.offsetWidth) {
+        posicaoNave += 10;
     }
     if (baixo && localNave > 0) {
         localNave -= 10;
     }
-    if (cima && localNave < game.offsetHeight - ship.offsetHeight) {
+    if (cima && localNave < game.offsetHeight - nave.offsetHeight) {
         localNave += 10;
     }
 
@@ -57,7 +57,7 @@ gameLoop(); // Execução do jogo
 
 // Função para detectar a posição atual da nave 
 function Coordenada() {
-    return { x: posiçãoNave, y: localNave };
+    return { x: posicaoNave, y: localNave };
 }
 
 // Comando para exportar a posição da nave 

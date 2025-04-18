@@ -12,6 +12,7 @@ const posicaoHorizontal = (game.offsetWidth - larguraTotal) / 2;
 
 const formacao = []; // Recebe as hordas de inimigos
 
+i = 1;
 // Repetição para criação de colunas para os inimigos
 for (let col = 0; col < colunas; col++) {
   const coluna = document.createElement("div");
@@ -25,7 +26,9 @@ for (let col = 0; col < colunas; col++) {
   // Repetição de adição dos inimigos às colunas
   for (let row = 0; row < linhas; row++) {
     const inimigo = document.createElement("div"); 
-    inimigo.classList.add("inimigo"); 
+    inimigo.classList.add("inimigo");
+    inimigo.classList.add(`${i}`);
+    i += 1;
     coluna.appendChild(inimigo); 
   }
   game.appendChild(coluna); 
@@ -59,4 +62,4 @@ function moveColunas() {
   }
 }
 
-setInterval(moveColunas, 50);
+// setInterval(moveColunas, 50); 
