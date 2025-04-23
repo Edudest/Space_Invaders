@@ -36,6 +36,7 @@ body {
     width: 70px;
     height: 70px;
     background-color: aqua;
+    position: absolute;
 }
 .projetil{
     width: 10px;

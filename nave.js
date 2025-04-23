@@ -54,11 +54,3 @@ function gameLoop() {
 }
 
 gameLoop(); // Execução do jogo
-
-// Função para detectar a posição atual da nave 
-function Coordenada() {
-    return { x: posicaoNave, y: localNave };
-}
-
-// Comando para exportar a posição da nave 
-window.Coordenada = Coordenada;

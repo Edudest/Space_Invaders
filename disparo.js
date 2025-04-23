@@ -45,7 +45,7 @@ function tentarDisparar() {
 
 // Animação por frames
 function moverProjetilPorFrame(projetil) {
-  const velocidade = 5;
+  const velocidade = 8;
 
   // Lógica de movimento do projetil
   function animar() {
@@ -60,8 +60,15 @@ function moverProjetilPorFrame(projetil) {
 
     // Atualição de movimento
     projetil.style.top = `${novaPosicao}px`;
+    
+    const inimigos = document.querySelectorAll(".inimigo");
+    inimigos.forEach((inimigo) => {
+      if (colidiu(projetil, inimigo)) {
+        projetil.remove();
+        inimigo.remove();
+      }
+    });
     requestAnimationFrame(animar);
   }
-
   requestAnimationFrame(animar); // Executa a animação
 }
