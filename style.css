@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-image: url(9b9a77648d99af5faf683e214e54bb35.jpeg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,9 +17,9 @@ body {
 }
 
 #nave {
-    width: 50px;
-    height: 50px;
-    background-color: lime;
+    width: 220px;
+    height: 210px;
+    background-image: url('nave2-1.png.png');
     position: absolute;
     left: 50%;
 }
@@ -32,8 +32,8 @@ body {
 }
   
 .inimigo {
-    width: 70px;
+    width: 75px;
     height: 70px;
-    background-color: aqua;
+    background-image: url('inimigo1.png');
 }
   
