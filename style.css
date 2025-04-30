@@ -36,4 +36,163 @@ body {
     height: 70px;
     background-color: aqua;
 }
-  
+
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tela de Instruções - SUA PARTE */
+.tela-instrucoes {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.card-instrucoes {
+    background: linear-gradient(145deg, #111, #222);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 255, 150, 0.2);
+    border: 1px solid #00ff96;
+    animation: glow 2s infinite alternate;
+}
+
+.cabecalho-instrucoes {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cabecalho-instrucoes h1 {
+    font-size: 2.5rem;
+    color: #00ff96;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 150, 0.5);
+}
+
+.divisor {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff96, transparent);
+    margin: 0 auto;
+}
+
+.controles-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.controle-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.tecla {
+    width: 70px;
+    height: 70px;
+    background: #222;
+    border: 2px solid #0099ff;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0099ff;
+    box-shadow: 0 5px 0 #0066cc, 
+                inset 0 0 10px rgba(0, 153, 255, 0.3);
+    transition: all 0.2s;
+}
+
+.tecla-destaque {
+    transform: scale(1.1);
+    border-color: #00ff96;
+    color: #00ff96;
+    box-shadow: 0 5px 0 #00aa60, 
+                inset 0 0 15px rgba(0, 255, 150, 0.4);
+}
+
+/* Estilo especial para a tecla de espaço */
+.tecla-espaco {
+    width: 120px;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    border-color: #ff5555;
+    color: #ff5555;
+    box-shadow: 0 5px 0 #cc0000, 
+                inset 0 0 10px rgba(255, 85, 85, 0.3);
+}
+
+.controle-especial {
+    grid-column: span 2;
+    margin-top: 10px;
+}
+
+.acao {
+    color: #ddd;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.dica-jogo {
+    background: rgba(0, 255, 150, 0.1);
+    border-left: 4px solid #00ff96;
+    padding: 15px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.dica-jogo p {
+    color: #00ff96;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.botao-voltar {
+    width: 100%;
+    background: linear-gradient(to right, #00ff96, #00ccff);
+    color: #000;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+.botao-voltar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 150, 0.4);
+}
+
+/* Animação */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(0, 255, 150, 0.3);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(0, 255, 150, 0.6);
+    }
+}
