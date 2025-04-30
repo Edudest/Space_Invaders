@@ -19,7 +19,7 @@ body {
 #nave {
     width: 220px;
     height: 210px;
-    background-image: url('nave2-1.png.png');
+    background-image: url(nave2-1.png.png);
     position: absolute;
     left: 50%;
 }
@@ -31,9 +31,29 @@ body {
     gap: 50px;
 }
   
-.inimigo {
+.inimigo1 {
     width: 75px;
     height: 70px;
-    background-image: url('inimigo1.png');
+    background-image: url(inimigo1.png);
 }
-  
+
+.inimigo2 {
+    width: 75px;
+    height: 70px;
+    background-image: url(inimigo2.png);
+}
+
+.inimigo3 {
+    width: 75px;
+    height: 70px;
+    background-image: url(inimigo3.png);
+}
+
+.inimigo4 {
+    width: 75px;
+    height: 70px;
+    background-image: url(inimigo4.png);
+}
+
+
+

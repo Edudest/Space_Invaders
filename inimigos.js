@@ -18,7 +18,7 @@ for (let col = 0; col < colunas; col++) {
 
   for (let row = 0; row < linhas; row++) {
     const inimigo = document.createElement("div");
-    inimigo.classList.add("inimigo");
+    inimigo.classList.add("inimigo", "inimigo" + (row + 1));
     coluna.appendChild(inimigo);
   }
 
@@ -51,4 +51,4 @@ function moveColunas() {
   }
 }
 
-setInterval(moveColunas, 50);
+setInterval(moveColunas, 50); 
