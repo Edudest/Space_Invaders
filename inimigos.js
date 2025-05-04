@@ -1,25 +1,25 @@
-// Instancias para criação dos inimigos 
+// Instâncias para criação dos inimigos 
 const linhas = 4;
 const colunas = 6;
 
-// Instancias para estilização dos inimigos
+// Instâncias para estilização dos inimigos
 const larguraInimigo = 40;
 const espacamentoHorizontal = 150;
 
-// Instancias para organização dos inimigos dentro do espaco "game" 
+// Instâncias para organização dos inimigos dentro do espaço "game"
 const larguraTotal = colunas * (larguraInimigo + espacamentoHorizontal) - espacamentoHorizontal;
 const posicaoHorizontal = (game.offsetWidth - larguraTotal) / 2;
 
-const inimigos
- = []
-i = 1;
+const inimigos = [];
+let i = 1;
+
 // Repetição para criação de colunas para os inimigos
 for (let col = 0; col < colunas; col++) {
   for (let row = 0; row < linhas; row++) {
     const inimigo = document.createElement("div");
     inimigo.classList.add("inimigo");
-    inimigo.classList.add(`${i}`)
-    i ++;
+    inimigo.classList.add(`${i}`);
+    i++;
 
     // Calcula a posição do inimigo
     const posX = posicaoHorizontal + col * (larguraInimigo + espacamentoHorizontal);
@@ -38,56 +38,104 @@ let velocidade = 5;
 
 // Função responsável por movimentar os inimigos
 function moverinimigos() {
-  let alterarDirecao = false;
-  
+  let alterarDirecaoBorda = false;
+
   inimigos.forEach((inimigo) => {
+    if (!document.body.contains(inimigo)) return;
+
     let posX = parseFloat(inimigo.style.left);
     let novoX = posX + direcao * velocidade;
     inimigo.style.left = `${novoX}px`;
 
     // Verificação de bordas
-    if (
-      novoX <= 0 || 
-      novoX + inimigo.offsetWidth >= game.offsetWidth
-    ) {
-      alterarDirecao = true;
+    if (novoX <= 0 || novoX + inimigo.offsetWidth >= game.offsetWidth) {
+      alterarDirecaoBorda = true;
     }
 
     // Verificação da colisão com a nave 
     if (colidiu(inimigo, nave)) {
+      alert("💥 Game Over!");
       window.location.reload(); // ou chamar tela de "Game Over"
     }
   });
 
-  if (alterarDirecao) {
+  // Inverte a direção se tocar a borda
+  if (alterarDirecaoBorda) {
     direcao *= -1;
-  }
-
-  function disparo() {
-
-    // Crição do disparo
-    const projetil = document.createElement("div");
-    projetil.classList.add("projetil");
-  
-    // Parametros para o posicionamento do disparo
-    const larguraInimigo = inimigo.offsetWidth;
-    const larguraProjetil = 10;
-    const alturaProjetil = 25;
-  
-    // Calculo de posicionamento disparo
-    const posX = inimigo.offsetLeft + (larguraInimigo / 2) - larguraProjetil / 2;
-    const posicaoY = inimigo.offsetTop - alturaProjetil;
-  
-    // Atribuição de posição ao projetil
-    projetil.style.left = `${posX}px`;
-    projetil.style.top = `${posicaoY}px`;
-  
-    // Adição do projetil à tela
-    document.getElementById("game").appendChild(projetil);
-    console.log`${posX}` // Lembrar de apagar depois !!!!!!!!!!
-    return projetil;
   }
 
   requestAnimationFrame(moverinimigos);
 }
+
+// Função para disparar projetéis dos inimigos
+function dispararInimigo() {
+  const inimigosVivos = inimigos.filter(inimigo => document.body.contains(inimigo));
+
+  if (inimigosVivos.length > 0) {
+    const index = Math.floor(Math.random() * inimigosVivos.length);
+    const inimigo = inimigosVivos[index];
+
+    // Criar o projetil
+    const projetil = document.createElement("div");
+    projetil.classList.add("projetil-inimigo");
+
+    const larguraProjetil = 10;
+    const alturaProjetil = 25;
+    const posX = inimigo.offsetLeft + (inimigo.offsetWidth / 2) - (larguraProjetil / 2);
+    const posY = inimigo.offsetTop + inimigo.offsetHeight;
+
+    projetil.style.left = `${posX}px`;
+    projetil.style.top = `${posY}px`;
+    game.appendChild(projetil);
+
+    // Iniciar a animação do projetil
+    moverProjetilInimigo(projetil);
+  }
+
+  // Próximo disparo em tempo fixo (pode variar se quiser)
+  setTimeout(dispararInimigo, Math.random() * 150); // entre 0.5s e 1.5s
+}
+
+// Movimento do projetil inimigo
+function moverProjetilInimigo(projetil) {
+  const velocidadeProjetil = 9;
+
+  function animar() {
+    // Pega a posição atual do projetil
+    const yAtual = parseFloat(projetil.style.top);
+    projetil.style.top = `${yAtual + velocidadeProjetil}px`;
+
+    // Verifica colisão com a nave
+    if (colidiu(projetil, nave)) {
+      alert("💥 Game Over!");
+      window.location.reload();
+      return;
+    }
+
+    // Remove o projetil se ele sair da tela
+    if (yAtual > game.offsetHeight) {
+      projetil.remove();
+      return;
+    }
+
+    // Chama a animação novamente
+    requestAnimationFrame(animar);
+  }
+
+  // Inicia a animação
+  requestAnimationFrame(animar);
+}
+
+// Troca aleatória de direção horizontal a cada x segundos
+function alterarDirecaoAleatoriamente() {
+  const tempo = Math.random() * 1200;
+  setTimeout(() => {
+    direcao *= -1;
+    alterarDirecaoAleatoriamente();
+  }, tempo);
+}
+
+// Inicialização do movimento e disparos
 requestAnimationFrame(moverinimigos);
+dispararInimigo(); // disparos independentes
+alterarDirecaoAleatoriamente();
