@@ -18,14 +18,14 @@ function moveShip() {
 
 // Evento de pressão de tecla
 document.addEventListener("keydown", (event) => {
-    if (event.key === "a") esquerda = true;
-    if (event.key === "d") direita = true;
+    if (event.key === "ArrowLeft") esquerda = true;
+    if (event.key === "ArrowRight") direita = true;
 });
 
 // Evento de soltar tecla
 document.addEventListener("keyup", (event) => {
-    if (event.key === "a") esquerda = false;
-    if (event.key === "d") direita = false;
+    if (event.key === "ArrowLeft") esquerda = false;
+    if (event.key === "ArrowRight") direita = false;
 });
 
 // Loop para movimentação por pressão continua

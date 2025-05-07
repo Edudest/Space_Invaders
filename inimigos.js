@@ -1,3 +1,6 @@
+
+
+
 // Instâncias para criação dos inimigos 
 const linhas = 4;
 const colunas = 6;
@@ -18,7 +21,7 @@ for (let col = 0; col < colunas; col++) {
   for (let row = 0; row < linhas; row++) {
     const inimigo = document.createElement("div");
     inimigo.classList.add("inimigo");
-    inimigo.classList.add(`${i}`);
+    inimigo.classList.add(`inimigo${i}` );
     i++;
 
     // Calcula a posição do inimigo
@@ -80,7 +83,6 @@ function dispararInimigo() {
     projetil.classList.add("projetil-inimigo");
 
     const larguraProjetil = 10;
-    const alturaProjetil = 25;
     const posX = inimigo.offsetLeft + (inimigo.offsetWidth / 2) - (larguraProjetil / 2);
     const posY = inimigo.offsetTop + inimigo.offsetHeight;
 
@@ -106,7 +108,7 @@ function moverProjetilInimigo(projetil) {
     projetil.style.top = `${yAtual + velocidadeProjetil}px`;
 
     // Verifica colisão com a nave
-    if (colidiu(projetil, nave)) {
+    if (colisãoCircular(projetil, nave)) {
       alert("💥 Game Over!");
       window.location.reload();
       return;
