@@ -109,8 +109,7 @@ function moverProjetilInimigo(projetil) {
 
     // Verifica colisão com a nave
     if (colisãoCircular(projetil, nave)) {
-      alert("💥 Game Over!");
-      window.location.reload();
+      mostrarTelaDerrota()
       return;
     }
 
@@ -141,3 +140,8 @@ function alterarDirecaoAleatoriamente() {
 requestAnimationFrame(moverinimigos);
 dispararInimigo(); // disparos independentes
 alterarDirecaoAleatoriamente();
+
+function mostrarTelaDerrota() {
+  const tela = document.getElementById("telaDerrota");
+  tela.style.display = "flex";
+}

@@ -1,5 +1,5 @@
 let ultimoDisparo = 0; // Tempo desde o último disparo
-const intervaloDisparo = 600; // Intervalo de tempo entre cada disparo em ms
+const intervaloDisparo = 60; // Intervalo de tempo entre cada disparo em ms
 
 const pontuacao = document.getElementById("pontuacao");
 let pontosAtuais = 0; // Pega valor atual
@@ -63,7 +63,11 @@ function moverProjetilPorFrame(projetil) {
         inimigo.remove();
         pontosAtuais += 100;
         pontuacao.textContent = pontosAtuais;
-        console.log(pontosAtuais)
+
+        const inimigosRestantes = document.querySelectorAll(".inimigo");
+        if (inimigosRestantes.length === 0) {
+          mostrarTelaVitoria();
+        }
       }
     });
 
@@ -71,4 +75,9 @@ function moverProjetilPorFrame(projetil) {
   }
 
   requestAnimationFrame(animar);
+}
+
+function mostrarTelaVitoria() {
+  const tela = document.getElementById("telaVitoria");
+  tela.style.display = "flex";
 }

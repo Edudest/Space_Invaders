@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav class="navBar">
         <div class="navBar-content">
-        <img src="https://images.sympla.com.br/5e5813d492494-xs.png" class="logoFIEC" alt="">
-        <div class="centralizados">
-            <span class="badge">Pontuação:</span>
-            <span class="badge" id="pontuacao">0</span>
-            <div class="espacoVazio"></div>
-        </div>    
+            <img src="https://images.sympla.com.br/5e5813d492494-xs.png" class="logoFIEC" alt="">
+            <div class="centralizados">
+                <span class="badge">Pontuação:</span>
+                <span class="badge" id="pontuacao">0</span>
+                <div class="espacoVazio"></div>
+            </div>
     </nav>
     <div id="game">
         <div id="nave"></div>
         <div class="coluna"></div>
+        <div id="telaVitoria" style="display: none;">
+            Você venceu!
+        </div>
+        <div id="telaDerrota" style="display: none;">
+            Você Perdeu!
+        </div>
     </div>
-    
+
     <script src="colisao.js"></script>
     <script src="nave.js"></script>
     <script src="disparo.js"></script>
     <script src="inimigos.js"></script>
 </body>
+
 </html>
