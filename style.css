@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-image: url(imagens/fundo.jpeg);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,16 +13,60 @@ body {
     width: 80%;
     height: 90%;
     position: relative;
-    border: 2px solid white;
     overflow: hidden;
+    background-size: cover;
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    background-color: black;
+    gap: 40px;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    border: solid 2px white;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+.centralizados {
+    position:fixed;
+    top: 0;
+    padding-top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+.badge {
+    height: auto;
+    font-size: 1.5em;
+    background-color: black;
+    color: #39FF14;
+    border: solid 3px #39FF14;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
+    box-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
+}
+.logoFIEC {
+    max-width: 100%;
+    width: auto;
+    height: 65px;
+    filter: drop-shadow(0 0 3px #ffffff)
+    drop-shadow(0 0 3px #ffffff)
+    drop-shadow(0 0 3px #ffffff);
+}
+.espacoVazio {
+    width: 65px; /* mesmo tamanho da imagem da esquerda */
+    height: 100%;
 }
 
 #nave {
-    width: 50px;
-    height: 50px;
-    background-color: lime;
+    width: 70px;
+    height: 70px;
     position: absolute;
-    left: 50%;
+    background-image: url(imagens/nave.png);
 }
 
 .coluna {
@@ -34,6 +79,71 @@ body {
 .inimigo {
     width: 70px;
     height: 70px;
-    background-color: aqua;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-  
+
+.projetil{
+    width: 10px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+}
+
+.projetil-inimigo {
+    width: 10px;
+    height: 25px;
+    background-color: red;
+    position: absolute;
+}
+
+.inimigo1, .inimigo5, .inimigo9, .inimigo13, .inimigo17, .inimigo21{
+    background-image: url(imagens/inimigoAzul.png);
+}
+
+.inimigo2, .inimigo6, .inimigo10, .inimigo14, .inimigo18, .inimigo22{
+    background-image: url(imagens/inimigoRoxo.png);
+}
+
+.inimigo3, .inimigo7, .inimigo11, .inimigo15, .inimigo19, .inimigo23{
+    background-image: url(imagens/inimigoVerde.png);
+}
+
+.inimigo4, .inimigo8, .inimigo12, .inimigo16, .inimigo20, .inimigo24{
+    background-image: url(imagens/inimigoVermelho.png);
+}
+
+#telaVitoria {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #39FF14;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-shadow: 0 0 10px #39FF14;
+}
+
+#telaDerrota {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ff1414;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-shadow: 0 0 10px #ff1414;
+}
