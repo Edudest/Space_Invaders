@@ -42,9 +42,9 @@ function tentarDisparar() {
 
 // Animação por frames
 function moverProjetilPorFrame(projetil) {
-   const velocidade = 8; // velocidade do projetil
+  const velocidade = 8; // velocidade do projetil
 
-   // calculo para deslocamento do disparo
+  // calculo para deslocamento do disparo
   function animar() {
     const posicaoAtual = parseInt(projetil.style.top);
     const novaPosicao = posicaoAtual - velocidade;

@@ -18,7 +18,7 @@ for (let col = 0; col < colunas; col++) {
   for (let row = 0; row < linhas; row++) {
     const inimigo = document.createElement("div");
     inimigo.classList.add("inimigo");
-    inimigo.classList.add(`inimigo${i}` );
+    inimigo.classList.add(`inimigo${i}`);
     i++;
 
     // Calcula a posição do inimigo
@@ -97,7 +97,7 @@ function dispararInimigo() {
   }
 
   // Próximo disparo em tempo fixo 
-  setTimeout(dispararInimigo, Math.random() * 150); 
+  setTimeout(dispararInimigo, Math.random() * 150);
 }
 
 // Movimento do projetil inimigo
@@ -140,7 +140,7 @@ function alterarDirecaoAleatoriamente() {
 
 // Inicialização do movimento e disparos
 requestAnimationFrame(moverinimigos);
-// dispararInimigo(); // disparos independentes
+dispararInimigo(); // disparos independentes
 alterarDirecaoAleatoriamente();
 
 // Executa a tela de derrota

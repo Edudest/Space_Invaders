@@ -1,310 +1,347 @@
 #CorpoJogo {
-    margin: 0;
-    padding: 0;
-    background-image: url(imagens/fundo.jpeg);
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url(imagens/fundo.jpeg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #CorpoMenu {
-    margin: 0;
-      padding: 0;
-      font-family: 'Courier New', monospace;
-      background: linear-gradient(to bottom, #01010f, #001133);
-      overflow: hidden;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #39ff14;
-      position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(to bottom, #01010f, #001133);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #39ff14;
+  position: relative;
 }
 
 #game {
-    width: 80%;
-    height: 90%;
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
+  width: 80%;
+  height: 90%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
 }
 
 .navBar {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    background-color: black;
-    gap: 40px;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    border: solid 2px white;
-    padding: 0 20px;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  background-color: black;
+  gap: 40px;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  border: solid 2px white;
+  padding: 0 20px;
+  justify-content: space-between;
 }
+
 .centralizados {
-    position:fixed;
-    top: 0;
-    padding-top: 7px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 20px;
+  position: fixed;
+  top: 0;
+  padding-top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
 }
+
 .badge {
-    height: auto;
-    font-size: 1.5em;
-    background-color: black;
-    color: #39FF14;
-    border: solid 3px #39FF14;
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
-    box-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
+  height: auto;
+  font-size: 1.5em;
+  background-color: black;
+  color: #39FF14;
+  border: solid 3px #39FF14;
+  font-family: 'Courier New', Courier, monospace;
+  text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
+  box-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
 }
+
 .logoFIEC {
-    max-width: 100%;
-    width: auto;
-    height: 65px;
-    filter: drop-shadow(0 0 3px #ffffff)
-    drop-shadow(0 0 3px #ffffff)
-    drop-shadow(0 0 3px #ffffff);
+  max-width: 100%;
+  width: auto;
+  height: 65px;
+  filter: drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 3px #ffffff);
 }
+
 .espacoVazio {
-    width: 65px; /* mesmo tamanho da imagem da esquerda */
-    height: 100%;
+  width: 65px;
+  /* mesmo tamanho da imagem da esquerda */
+  height: 100%;
 }
 
 #nave {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    background-image: url(imagens/nave.png);
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  background-image: url(imagens/nave.png);
 }
 
 .coluna {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-}
-  
-.inimigo {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
-.projetil{
-    width: 10px;
-    height: 20px;
-    background-color: blue;
-    position: absolute;
+.inimigo {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.projetil {
+  width: 10px;
+  height: 20px;
+  background-color: blue;
+  position: absolute;
 }
 
 .projetil-inimigo {
-    width: 10px;
-    height: 25px;
-    background-color: red;
-    position: absolute;
+  width: 10px;
+  height: 25px;
+  background-color: red;
+  position: absolute;
 }
 
-.inimigo1, .inimigo5, .inimigo9, .inimigo13, .inimigo17, .inimigo21{
-    background-image: url(imagens/inimigoAzul.png);
+.inimigo1,
+.inimigo5,
+.inimigo9,
+.inimigo13,
+.inimigo17,
+.inimigo21 {
+  background-image: url(imagens/inimigoAzul.png);
 }
 
-.inimigo2, .inimigo6, .inimigo10, .inimigo14, .inimigo18, .inimigo22{
-    background-image: url(imagens/inimigoRoxo.png);
+.inimigo2,
+.inimigo6,
+.inimigo10,
+.inimigo14,
+.inimigo18,
+.inimigo22 {
+  background-image: url(imagens/inimigoRoxo.png);
 }
 
-.inimigo3, .inimigo7, .inimigo11, .inimigo15, .inimigo19, .inimigo23{
-    background-image: url(imagens/inimigoVerde.png);
+.inimigo3,
+.inimigo7,
+.inimigo11,
+.inimigo15,
+.inimigo19,
+.inimigo23 {
+  background-image: url(imagens/inimigoVerde.png);
 }
 
-.inimigo4, .inimigo8, .inimigo12, .inimigo16, .inimigo20, .inimigo24{
-    background-image: url(imagens/inimigoVermelho.png);
+.inimigo4,
+.inimigo8,
+.inimigo12,
+.inimigo16,
+.inimigo20,
+.inimigo24 {
+  background-image: url(imagens/inimigoVermelho.png);
 }
 
 #telaVitoria {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #39FF14;
-    font-size: 3em;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    text-shadow: 0 0 10px #39FF14;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #39FF14;
+  font-size: 3em;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  text-shadow: 0 0 10px #39FF14;
 }
 
 #telaDerrota {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #ff1414;
-    font-size: 3em;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    text-shadow: 0 0 10px #ff1414;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ff1414;
+  font-size: 3em;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  text-shadow: 0 0 10px #ff1414;
 }
 
 .intro {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: #39ff14;
-    z-index: 1000;
-    animation: fadeOut 3s ease-in-out 2.5s forwards;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #39ff14;
+  z-index: 1000;
+  animation: fadeOut 3s ease-in-out 2.5s forwards;
+}
 
-  .cursor {
-    display: inline-block;
-    width: 10px;
-    background-color: #39ff14;
-    margin-left: 5px;
-    animation: blink 1s step-start infinite;
-  }
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #39ff14;
+  margin-left: 5px;
+  animation: blink 1s step-start infinite;
+}
 
-  @keyframes blink {
-    50% { opacity: 0; }
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
+}
 
-  @keyframes fadeOut {
-    to {
-      opacity: 0;
-      visibility: hidden;
-    }
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
+}
 
-  /* Estrelas animadas no fundo */
-  .fundo-estrelado {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    overflow: hidden;
-  }
+/* Estrelas animadas no fundo */
+.fundo-estrelado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  overflow: hidden;
+}
 
-  .estrela {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
+.estrela {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: cair 10s linear infinite;
+}
+
+@keyframes cair {
+  from {
+    transform: translateY(-10px);
     opacity: 0.8;
-    animation: cair 10s linear infinite;
   }
 
-  @keyframes cair {
-    from {
-      transform: translateY(-10px);
-      opacity: 0.8;
-    }
-    to {
-      transform: translateY(110vh);
-      opacity: 0;
-    }
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 30px;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #39ff14, 0 0 30px #00ffff;
+  z-index: 1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1;
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  padding: 12px 28px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-shadow: 0 0 10px #00ffff;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #00ffff;
+  color: black;
+  box-shadow: 0 0 25px #00ffff;
+}
+
+.pulsando {
+  animation: pulse 1.5s infinite;
+  border-color: #ff073a;
+  color: #ff073a;
+  text-shadow: 0 0 10px #ff073a;
+}
+
+.pulsando:hover {
+  background-color: #ff073a;
+  box-shadow: 0 0 25px #ff073a;
+  color: black;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #ff073a;
   }
 
-  h1 {
-    font-size: 4rem;
-    margin-bottom: 30px;
-    color: #ff00ff;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #39ff14, 0 0 30px #00ffff;
-    z-index: 1;
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #39ff14;
   }
 
-  .menu {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 1;
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #ff073a;
   }
+}
 
-  button {
-    background-color: transparent;
-    border: 2px solid #00ffff;
-    color: #00ffff;
-    padding: 12px 28px;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: 0.3s;
-    text-shadow: 0 0 10px #00ffff;
-    border-radius: 10px;
-  }
+.creditos {
+  position: absolute;
+  bottom: 40px;
+  font-size: 0.9rem;
+  color: #888;
+  text-shadow: 0 0 5px #00ffff;
+  z-index: 1;
+  text-align: center;
+}
 
-  button:hover {
-    background-color: #00ffff;
-    color: black;
-    box-shadow: 0 0 25px #00ffff;
-  }
+footer {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.9rem;
+  color: #777;
+  text-shadow: 0 0 5px #00ffff;
+  z-index: 1;
+  left: 10px;
+}
 
-  .pulsando {
-    animation: pulse 1.5s infinite;
-    border-color: #ff073a;
-    color: #ff073a;
-    text-shadow: 0 0 10px #ff073a;
-  }
-
-  .pulsando:hover {
-    background-color: #ff073a;
-    box-shadow: 0 0 25px #ff073a;
-    color: black;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 10px #ff073a; }
-    50% { transform: scale(1.08); box-shadow: 0 0 30px #39ff14; }
-    100% { transform: scale(1); box-shadow: 0 0 10px #ff073a; }
-  }
-
-  .creditos {
-    position: absolute;
-    bottom: 40px;
-    font-size: 0.9rem;
-    color: #888;
-    text-shadow: 0 0 5px #00ffff;
-    z-index: 1;
-    text-align: center;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 10px;
-    font-size: 0.9rem;
-    color: #777;
-    text-shadow: 0 0 5px #00ffff;
-    z-index: 1;
-    left: 10px;
-  }
-
-  .logo-escola {
-    width: 80px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 1;
-    filter: drop-shadow(0 0 5px #00ffff);
-  }
+.logo-escola {
+  width: 80px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+  filter: drop-shadow(0 0 5px #00ffff);
+}
