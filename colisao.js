@@ -12,6 +12,7 @@
       );
     }
 
+    // colide em formato 
     function colisãoCircular(a, b) {
       const objetoA = a.offsetWidth * 0.25;
       const objetoB = b.offsetWidth / 2.5;

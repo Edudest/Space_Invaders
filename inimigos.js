@@ -138,7 +138,7 @@ function alterarDirecaoAleatoriamente() {
 
 // Inicialização do movimento e disparos
 requestAnimationFrame(moverinimigos);
-dispararInimigo(); // disparos independentes
+// dispararInimigo(); // disparos independentes
 alterarDirecaoAleatoriamente();
 
 function mostrarTelaDerrota() {

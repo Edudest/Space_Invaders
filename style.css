@@ -1,4 +1,4 @@
-body {
+#CorpoJogo {
     margin: 0;
     padding: 0;
     background-image: url(imagens/fundo.jpeg);
@@ -7,6 +7,21 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+#CorpoMenu {
+    margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background: linear-gradient(to bottom, #01010f, #001133);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #39ff14;
+      position: relative;
 }
 
 #game {
@@ -147,3 +162,149 @@ body {
     z-index: 1000;
     text-shadow: 0 0 10px #ff1414;
 }
+
+.intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #39ff14;
+    z-index: 1000;
+    animation: fadeOut 3s ease-in-out 2.5s forwards;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: #39ff14;
+    margin-left: 5px;
+    animation: blink 1s step-start infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  /* Estrelas animadas no fundo */
+  .fundo-estrelado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
+  }
+
+  .estrela {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: cair 10s linear infinite;
+  }
+
+  @keyframes cair {
+    from {
+      transform: translateY(-10px);
+      opacity: 0.8;
+    }
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #39ff14, 0 0 30px #00ffff;
+    z-index: 1;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    padding: 12px 28px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0 0 10px #00ffff;
+    border-radius: 10px;
+  }
+
+  button:hover {
+    background-color: #00ffff;
+    color: black;
+    box-shadow: 0 0 25px #00ffff;
+  }
+
+  .pulsando {
+    animation: pulse 1.5s infinite;
+    border-color: #ff073a;
+    color: #ff073a;
+    text-shadow: 0 0 10px #ff073a;
+  }
+
+  .pulsando:hover {
+    background-color: #ff073a;
+    box-shadow: 0 0 25px #ff073a;
+    color: black;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px #ff073a; }
+    50% { transform: scale(1.08); box-shadow: 0 0 30px #39ff14; }
+    100% { transform: scale(1); box-shadow: 0 0 10px #ff073a; }
+  }
+
+  .creditos {
+    position: absolute;
+    bottom: 40px;
+    font-size: 0.9rem;
+    color: #888;
+    text-shadow: 0 0 5px #00ffff;
+    z-index: 1;
+    text-align: center;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.9rem;
+    color: #777;
+    text-shadow: 0 0 5px #00ffff;
+    z-index: 1;
+    left: 10px;
+  }
+
+  .logo-escola {
+    width: 80px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
