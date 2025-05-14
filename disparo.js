@@ -1,5 +1,5 @@
 let ultimoDisparo = 0; // Tempo desde o último disparo
-const intervaloDisparo = 60; // Intervalo de tempo entre cada disparo em ms
+const intervaloDisparo = 500; // Intervalo de tempo entre cada disparo em ms
 
 const pontuacao = document.getElementById("pontuacao");
 let pontosAtuais = 0; // Pega valor atual
@@ -11,7 +11,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Execução de disparo
+// Execução de disparo e calculos para posição inicial do disparo 
 function disparo() {
   const projetil = document.createElement("div");
   projetil.classList.add("projetil");
@@ -27,7 +27,6 @@ function disparo() {
   projetil.style.top = `${posicaoY}px`;
 
   document.getElementById("game").appendChild(projetil);
-  console.log(posicaoX); // Corrigido
 
   return projetil;
 }
@@ -43,19 +42,23 @@ function tentarDisparar() {
 
 // Animação por frames
 function moverProjetilPorFrame(projetil) {
-  const velocidade = 8;
+   const velocidade = 8; // velocidade do projetil
 
+   // calculo para deslocamento do disparo
   function animar() {
     const posicaoAtual = parseInt(projetil.style.top);
     const novaPosicao = posicaoAtual - velocidade;
 
+    // Remove projetil ao sair da linha de visão
     if (novaPosicao < -25) {
       projetil.remove();
       return;
     }
 
+    // Atualiza o posição do projetil
     projetil.style.top = `${novaPosicao}px`;
 
+    // Atualiza pontuação
     const inimigos = document.querySelectorAll(".inimigo");
     inimigos.forEach((inimigo) => {
       if (colidiu(projetil, inimigo)) {
@@ -64,6 +67,7 @@ function moverProjetilPorFrame(projetil) {
         pontosAtuais += 100;
         pontuacao.textContent = pontosAtuais;
 
+        // Verifica e mostra a tela de vitória
         const inimigosRestantes = document.querySelectorAll(".inimigo");
         if (inimigosRestantes.length === 0) {
           mostrarTelaVitoria();
@@ -71,12 +75,13 @@ function moverProjetilPorFrame(projetil) {
       }
     });
 
-    requestAnimationFrame(animar);
+    requestAnimationFrame(animar); // Execução de animação
   }
 
-  requestAnimationFrame(animar);
+  requestAnimationFrame(animar); // Execução de animação
 }
 
+// Torna a tela de vitória visivel, pois esta apenas ocultada
 function mostrarTelaVitoria() {
   const tela = document.getElementById("telaVitoria");
   tela.style.display = "flex";

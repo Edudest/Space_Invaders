@@ -10,7 +10,7 @@ let localNave = game.offsetHeight - nave.offsetHeight - 30;
 let esquerda = false;
 let direita = false;
 
-// Movimentação com referencia para esquerda e para cima
+// Posiciona a nave dentro do jogo
 function moveShip() {
     nave.style.left = `${posicaoNave}px`;
     nave.style.top = `${localNave}px`;

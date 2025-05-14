@@ -12,7 +12,7 @@
       );
     }
 
-    // colide em formato 
+    // colide em formato circular para se adequar ao formato da nave
     function colisãoCircular(a, b) {
       const objetoA = a.offsetWidth * 0.25;
       const objetoB = b.offsetWidth / 2.5;

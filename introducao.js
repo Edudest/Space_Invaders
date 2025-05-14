@@ -1,11 +1,13 @@
+// Executa o bloco de instruções
 function mostrarInstrucoes() {
     alert("🕹️ Use as setas do teclado para mover a nave.\n🔫 Pressione espaço para atirar.\n👾 Derrote todos os invasores!");
 }
 
-// Geração das estrelas em movimento
+// Define variaveis para a criação do movimento de estrelas
 const fundo = document.getElementById('fundo-estrelado');
 const numeroDeEstrelas = 100;
 
+// Geração das estrelas em movimento
 for (let i = 0; i < numeroDeEstrelas; i++) {
     const estrela = document.createElement('div');
     const tamanho = Math.random() * 3 + 2; // entre 2px e 5px

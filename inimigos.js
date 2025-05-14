@@ -1,6 +1,3 @@
-
-
-
 // Instâncias para criação dos inimigos 
 const linhas = 4;
 const colunas = 6;
@@ -28,16 +25,18 @@ for (let col = 0; col < colunas; col++) {
     const posX = posicaoHorizontal + col * (larguraInimigo + espacamentoHorizontal);
     const posY = 50 + row * 100;
 
+    // Atualiza a posição do inimigo
     inimigo.style.left = `${posX}px`;
     inimigo.style.top = `${posY}px`;
 
+    // Adiciona o inimigo à tela
     game.appendChild(inimigo);
     inimigos.push(inimigo);
   }
 }
 
 let direcao = 1; // 1 = direita e -1 = esquerda
-let velocidade = 5;
+let velocidade = 5; // velocidade da nave
 
 // Função responsável por movimentar os inimigos
 function moverinimigos() {
@@ -67,13 +66,14 @@ function moverinimigos() {
     direcao *= -1;
   }
 
-  requestAnimationFrame(moverinimigos);
+  requestAnimationFrame(moverinimigos); // Execução de animação
 }
 
 // Função para disparar projetéis dos inimigos
 function dispararInimigo() {
   const inimigosVivos = inimigos.filter(inimigo => document.body.contains(inimigo));
 
+  // Calculo para disparo individual 
   if (inimigosVivos.length > 0) {
     const index = Math.floor(Math.random() * inimigosVivos.length);
     const inimigo = inimigosVivos[index];
@@ -82,10 +82,12 @@ function dispararInimigo() {
     const projetil = document.createElement("div");
     projetil.classList.add("projetil-inimigo");
 
+    // Calculo para posicionamento do disparo
     const larguraProjetil = 10;
     const posX = inimigo.offsetLeft + (inimigo.offsetWidth / 2) - (larguraProjetil / 2);
     const posY = inimigo.offsetTop + inimigo.offsetHeight;
 
+    // Adição do disparo à tela
     projetil.style.left = `${posX}px`;
     projetil.style.top = `${posY}px`;
     game.appendChild(projetil);
@@ -94,13 +96,13 @@ function dispararInimigo() {
     moverProjetilInimigo(projetil);
   }
 
-  // Próximo disparo em tempo fixo (pode variar se quiser)
-  setTimeout(dispararInimigo, Math.random() * 150); // entre 0.5s e 1.5s
+  // Próximo disparo em tempo fixo 
+  setTimeout(dispararInimigo, Math.random() * 150); 
 }
 
 // Movimento do projetil inimigo
 function moverProjetilInimigo(projetil) {
-  const velocidadeProjetil = 9;
+  const velocidadeProjetil = 9; // velocidade do projetil inimigo
 
   function animar() {
     // Pega a posição atual do projetil
@@ -109,7 +111,7 @@ function moverProjetilInimigo(projetil) {
 
     // Verifica colisão com a nave
     if (colisãoCircular(projetil, nave)) {
-      mostrarTelaDerrota()
+      mostrarTelaDerrota() // Exibe a tela de derrota
       return;
     }
 
@@ -141,6 +143,7 @@ requestAnimationFrame(moverinimigos);
 // dispararInimigo(); // disparos independentes
 alterarDirecaoAleatoriamente();
 
+// Executa a tela de derrota
 function mostrarTelaDerrota() {
   const tela = document.getElementById("telaDerrota");
   tela.style.display = "flex";
